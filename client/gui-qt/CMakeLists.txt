@@ -63,7 +63,7 @@ target_include_directories(gui-qt PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(gui-qt PRIVATE client)
 target_link_libraries(gui-qt PRIVATE Qt5::Widgets)
 if(APPLE)
-  target_link_libraries(gui-qt PRIVATE "-framework CoreAudio" "-framework ForceFeedback" "-framework AudioToolbox")
+  target_link_libraries(gui-qt PRIVATE "-framework AudioUnit" "-framework CoreAudio" "-framework ForceFeedback" "-framework AudioToolbox")
   qt5_import_plugins(gui-qt 
     INCLUDE Qt5::QCocoaIntegrationPlugin
   )
