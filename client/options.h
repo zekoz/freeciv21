@@ -153,7 +153,7 @@ struct client_options {
   char mapimg_filename[512];
 
 // gui-qt client specific options.
-#define FC_QT_DEFAULT_THEME_NAME "NightStalker"
+#define FC_QT_DEFAULT_THEME_NAME "Classic"
   bool gui_qt_fullscreen;
   bool gui_qt_show_preview;
   bool gui_qt_allied_chat_only;

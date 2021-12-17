@@ -18,7 +18,7 @@
 #include <QLoggingCategory>
 #include <sstream>
 
-#ifdef FREECIV_DEBUG
+#ifndef __EMSCRIPTEN__
 #include <backward.hpp>
 #endif
 
@@ -29,7 +29,7 @@
 #include "fcbacktrace.h"
 
 // We don't want backtrace-spam to testmatic logs
-#if defined(FREECIV_DEBUG) && !defined(FREECIV_TESTMATIC)
+#ifndef __EMSCRIPTEN__
 #define BACKTRACE_ACTIVE 1
 #endif
 

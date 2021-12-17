@@ -31,6 +31,7 @@
 
 // Forward declarations
 class QTcpSocket;
+class QWebSocket;
 
 struct conn_pattern_list;
 struct genhash;

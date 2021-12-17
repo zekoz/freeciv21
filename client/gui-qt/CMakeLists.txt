@@ -69,3 +69,6 @@ if(APPLE)
     INCLUDE Qt5::QCocoaIntegrationPlugin
   )
 endif()
+if(EMSCRIPTEN)
+  qt5_import_plugins(gui-qt INCLUDE Qt5::QWasmIntegrationPlugin)
+endif()

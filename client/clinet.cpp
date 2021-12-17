@@ -143,13 +143,11 @@ static int try_to_connect(const QUrl &url, char *errbuf, int errbufsize)
           client.conn.used = false;
         });
   }
+  QObject::connect(client.conn.sock, &QTcpSocket::connected,
+                   [userName = url.userName()] {
+                     make_connection(client.conn.sock, userName);
+                   });
   client.conn.sock->connectToHost(url.host(), url.port());
-  if (!client.conn.sock->waitForConnected(-1)) {
-    errbuf[0] = '\0';
-    return -1;
-  }
-  make_connection(client.conn.sock, url.userName());
-
   return 0;
 }
 
