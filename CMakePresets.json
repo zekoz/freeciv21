@@ -11,7 +11,7 @@
             "displayName": "Build Everythign in Release Mode",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build-rel",
-            "installDir": "install",
+            "installDir": "_install",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "FREECIV_ENABLE_TOOLS": "ON",
@@ -54,7 +54,8 @@
     "buildPresets": [
         {
             "name": "fullrelease",
-            "configurePreset": "fullrelease"
+            "configurePreset": "fullrelease",
+            "targets": "install"
         }
     ]
 }

@@ -132,16 +132,11 @@ jobs:
         with:
           configurePreset: 'fullrelease'
           buildPreset: 'fullrelease'
-      - name: Install
-        run: |
-          sudo cmake --build build-rel --target install
-      - name: Debug
-        if: failure()
-        run: cat build-rel/CMakeCache.txt
       - uses: actions/upload-artifact@v2
+        name: Debug failure
         if: failure()
         with:
-          name: debug
+          name: debug-macos
           path: |
             build-rel/**/*.cmake
             build-rel/CMakeCache.txt
@@ -149,9 +144,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: macos
-          path: |
-            build-rel/freeciv21-client
-            build-rel/freeciv21-server
+          path: .install/**
   wasm:
     name: "WebAssembly"
     runs-on: ubuntu-latest
