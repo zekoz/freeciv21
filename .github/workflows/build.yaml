@@ -134,7 +134,7 @@ jobs:
           buildPreset: 'fullrelease'
       - name: Install
         run: |
-          cmake --build build-rel --target install
+          sudo cmake --build build-rel --target install
       - name: Debug
         if: failure()
         run: cat build-rel/CMakeCache.txt
