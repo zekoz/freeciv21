@@ -144,7 +144,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: macos
-          path: .install/**
+          path: _install/**
   wasm:
     name: "WebAssembly"
     runs-on: ubuntu-latest
