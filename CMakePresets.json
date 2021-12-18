@@ -54,7 +54,8 @@
     "buildPresets": [
         {
             "name": "fullrelease",
-            "configurePreset": "fullrelease"
+            "configurePreset": "fullrelease",
+            "targets": ["install"]
         }
     ]
 }

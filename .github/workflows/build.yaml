@@ -134,7 +134,14 @@ jobs:
           buildPreset: 'fullrelease'
       - name: Debug
         if: failure()
-        run: cat CMakeCache.txt
+        run: cat build-rel/CMakeCache.txt
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: debug
+          path: |
+            build-rel/**/*.cmake
+            build-rel/CMakeCache.txt
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
