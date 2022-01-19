@@ -11,6 +11,7 @@
 // Qt
 #include <QApplication>
 #include <QDir>
+#include <QFileSystemWatcher>
 #include <QPalette>
 #include <QSettings>
 #include <QStyle>
@@ -89,12 +90,13 @@ QPalette load_palette(QSettings &settings)
   return pal;
 }
 
+QFileSystemWatcher *watcher;
 } // namespace
 
 /**
    Loads a qt theme directory/theme_name
  */
-void qtg_gui_load_theme(QString &directory, QString &theme_name)
+void qtg_gui_load_theme(const QString &directory, const QString &theme_name)
 {
   QString fake_dir;
   QString data_dir;
@@ -108,7 +110,8 @@ void qtg_gui_load_theme(QString &directory, QString &theme_name)
 
   data_dir = QString(directory);
 
-  f.setFileName(data_dir + "/" + theme_name + "/resource.qss");
+  QString stylePath = data_dir + "/" + theme_name + "/resource.qss";
+  f.setFileName(stylePath);
 
   if (!f.open(QIODevice::ReadOnly | QIODevice::Text)) {
     if (QString(theme_name) != QStringLiteral(FC_QT_DEFAULT_THEME_NAME)) {
@@ -144,6 +147,18 @@ void qtg_gui_load_theme(QString &directory, QString &theme_name)
     queen()->reloadSidebarIcons();
   }
   QApplication::setPalette(load_palette(settings));
+
+  if (watcher == nullptr) {
+    watcher = new QFileSystemWatcher(qApp);
+  }
+
+  if (!watcher->files().contains(stylePath)) {
+    watcher->disconnect();
+    watcher->removePaths(watcher->files());
+    watcher->addPath(stylePath);
+    watcher->connect(watcher, &QFileSystemWatcher::fileChanged,
+                     [=]() { qtg_gui_load_theme(directory, theme_name); });
+  }
 }
 
 /**
