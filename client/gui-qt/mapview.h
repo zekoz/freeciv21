@@ -26,6 +26,7 @@
 
 class QEvent;
 class QFocusEvent;
+class QGridLayout;
 class QKeyEvent;
 class QMouseEvent;
 class QObject;
@@ -96,6 +97,7 @@ private:
   void update_font(const QString &name, const QFont &font);
 
   bool stored_autocenter;
+  QGridLayout *overlay;
   int cursor_frame{0};
   int cursor;
   double m_scale = 1;

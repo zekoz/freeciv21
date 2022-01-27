@@ -260,8 +260,9 @@ void map_view::hide_debugger()
  */
 void map_view::timer_event()
 {
-  if (queen()->infotab->underMouse()
-      || queen()->minimapview_wdg->underMouse()
+  if (/*queen()->infotab->underMouse()
+      || */
+      queen()->minimapview_wdg->underMouse()
       || queen()->sidebar_wdg->underMouse()) {
     update_cursor(CURSOR_DEFAULT);
     return;

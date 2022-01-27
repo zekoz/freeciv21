@@ -11,6 +11,8 @@
 
 #include <QHash>
 #include <QPixmapCache>
+#include <QSvgRenderer>
+#include <memory>
 /****************************************************************************
   Class helping reading icons/pixmaps from themes/gui-qt/icons folder
 ****************************************************************************/
@@ -19,12 +21,14 @@ class fcIcons {
 
 private:
   explicit fcIcons();
+  std::shared_ptr<QSvgRenderer> renderer;
   static fcIcons *m_instance;
 
 public:
   static fcIcons *instance();
   static void drop();
   QIcon getIcon(const QString &id);
+  QIcon getSvg(const QString &id);
   QPixmap *getPixmap(const QString &id);
   QString getPath(const QString &id);
 };
@@ -35,7 +39,6 @@ class hIcon {
 
 private:
   explicit hIcon() = default;
-  ;
   static hIcon *m_instance;
   QHash<QString, QIcon> hash;
 
