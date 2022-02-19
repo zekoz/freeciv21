@@ -73,13 +73,13 @@ void scale_widget::mousePressEvent(QMouseEvent *event)
  */
 move_widget::move_widget(QWidget *parent) : QLabel()
 {
-  QPixmap *pix;
+  QPixmap pix;
 
   setParent(parent);
   setCursor(Qt::SizeAllCursor);
-  pix = fcIcons::instance()->getPixmap(QStringLiteral("move"));
-  setPixmap(*pix);
-  delete pix;
+  pix = fcIcons::instance()->getIcon(QStringLiteral("move")).pixmap(32);
+  pix.setDevicePixelRatio(2);
+  setPixmap(pix);
   setFixedSize(16, 16);
 }
 

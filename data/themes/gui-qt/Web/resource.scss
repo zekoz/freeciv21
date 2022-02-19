@@ -4,7 +4,11 @@ $yellow-02: hsl(41, 48%, 91%);
 $yellow-03: hsl(40, 40%, 83%);
 $yellow-04: hsl(39, 43%, 80%);
 $yellow-05: hsl(36, 50%, 75%);
-$yellow-06: hsl(30, 50%, 63%);
+$yellow-06: hsl(30, 52%, 63%);
+$yellow-07: hsl(29, 55%, 51%);
+$yellow-08: hsl(28, 60%, 40%);
+$yellow-09: hsl(26, 70%, 32%);
+$yellow-10: hsl(25, 95%, 25%);
 
 $brownish: hsl(39, 95%, 34%);
 $bluish: hsl(206, 100%, 38%);
@@ -112,11 +116,11 @@ QPushButton:disabled {
 }
 
 *[civstatus_bg="true"] {
-    background-color: $red-10;
+    background-color: $base-bgcolor;
 }
 
 *[civstatus="true"] {
-  color: $base-bgcolor;
+  color: $red-10;
 }
 
 qfc_dialog::title {
@@ -864,6 +868,7 @@ unit_hud_selector {
 
 hud_action {
   selection-background-color: $base-bgcolor;
+  background-color: $base-bgcolor;
   color: $bluish;
 }
 
